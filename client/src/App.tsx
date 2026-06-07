@@ -35,9 +35,9 @@ function App() {
       <header className="w-full border-b border-white/5 bg-slate-950/20 backdrop-blur-md px-6 py-4 flex items-center justify-between z-20">
         <div 
           onClick={handleBackToMerchant}
-          className="flex items-center gap-2 cursor-pointer text-white font-bold"
+          className="flex items-center gap-2.5 cursor-pointer text-white font-extrabold text-lg tracking-wide"
         >
-          <CreditCard className="h-6 w-6 text-indigo-400" />
+          <img src="/logo.png" alt="OmniPay Logo" className="h-8 w-8 object-contain rounded-lg" />
           <span>OmniPay</span>
         </div>
         

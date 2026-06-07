@@ -93,8 +93,8 @@ export const MerchantDashboard: React.FC = () => {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-extrabold tracking-tight text-white mb-2 flex items-center gap-3">
-            <div className="h-10 w-10 bg-indigo-500/10 border border-indigo-500/20 rounded-xl flex items-center justify-center">
-              <CreditCard className="h-6 w-6 text-indigo-400" />
+            <div className="h-10 w-10 flex items-center justify-center">
+              <img src="/logo.png" alt="OmniPay Logo" className="h-full w-full object-contain rounded-xl" />
             </div>
             OmniPay 
             <span className="text-[10px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-2 py-0.5 rounded-md uppercase tracking-widest mt-1">
