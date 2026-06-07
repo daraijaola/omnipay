@@ -7,25 +7,32 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#030305',
-        card: 'rgba(15, 15, 25, 0.45)',
+        paper: {
+          DEFAULT: '#f4f2ea',
+          card: 'rgba(250, 249, 245, 0.74)',
+          solid: '#faf9f5'
+        },
+        ink: {
+          DEFAULT: '#11110f',
+          soft: 'rgba(17, 17, 15, 0.6)'
+        },
+        soft: '#d8d3c7',
+        signal: '#d4f75a',
+        muted: '#6d6a61',
+        line: {
+          DEFAULT: 'rgba(17, 17, 15, 0.14)',
+          soft: 'rgba(17, 17, 15, 0.08)'
+        },
+        up: '#1f7a4d',
+        down: '#c23b22'
       },
       fontFamily: {
-        sans: ['Outfit', 'sans-serif'],
+        sans: ['Arial', 'Helvetica', 'system-ui', 'sans-serif'],
+        mono: ['"Courier New"', 'ui-monospace', 'Menlo', 'monospace'],
       },
-      animation: {
-        scaleUp: 'scaleUp 0.3s ease-out forwards',
-        fadeIn: 'fadeIn 0.3s ease-out forwards',
-      },
-      keyframes: {
-        scaleUp: {
-          '0%': { transform: 'scale(0.95)', opacity: '0' },
-          '100%': { transform: 'scale(1)', opacity: '1' },
-        },
-        fadeIn: {
-          '0%': { opacity: '0', transform: 'translateY(10px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        }
+      boxShadow: {
+        'veritas': '0 22px 70px rgba(17, 17, 15, 0.09)',
+        'veritas-sm': '0 14px 40px rgba(17, 17, 15, 0.07)',
       }
     },
   },

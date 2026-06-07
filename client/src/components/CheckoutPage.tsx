@@ -144,9 +144,9 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ invoiceId, onBackToM
     return (
       <div className="min-h-[80vh] flex flex-col items-center justify-center">
         <div className="w-64 space-y-4">
-          <div className="h-40 w-full skeleton rounded-2xl" />
-          <div className="h-12 w-full skeleton rounded-xl" />
-          <div className="h-20 w-full skeleton rounded-xl" />
+          <div className="h-40 w-full bg-soft/30 animate-pulse border border-line rounded-[10px]" />
+          <div className="h-12 w-full bg-soft/30 animate-pulse border border-line rounded-[10px]" />
+          <div className="h-20 w-full bg-soft/30 animate-pulse border border-line rounded-[10px]" />
         </div>
       </div>
     );
@@ -155,12 +155,12 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ invoiceId, onBackToM
   if (invoiceError || !invoice) {
     return (
       <div className="w-full max-w-md mx-auto px-4 py-12 text-center relative z-10">
-        <div className="h-16 w-16 rounded-full bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400 mx-auto mb-6 shadow-[0_0_30px_rgba(244,63,94,0.2)]">
+        <div className="h-16 w-16 rounded-[10px] bg-red-50 border border-red-200 flex items-center justify-center text-down mx-auto mb-6 shadow-sm">
           <AlertCircle className="h-8 w-8" />
         </div>
-        <h2 className="text-2xl font-bold text-white mb-2">Invoice Not Found</h2>
-        <p className="text-slate-400 mb-8">{invoiceError || 'This payment link is invalid.'}</p>
-        <button onClick={onBackToMerchant} className="btn-primary w-full">
+        <h2 className="text-2xl font-bold text-ink mb-2">Invoice Not Found</h2>
+        <p className="text-muted mb-8 font-mono text-sm">{invoiceError || 'This payment link is invalid.'}</p>
+        <button onClick={onBackToMerchant} className="btn btn--dark w-full">
           Go back to Merchant
         </button>
       </div>
@@ -173,10 +173,10 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ invoiceId, onBackToM
     <button
       onClick={handlePayment}
       disabled={!quote || status === 'signing' || status === 'settling'}
-      className="btn-primary w-full py-4 flex items-center justify-center gap-2"
+      className="btn btn--dark w-full py-4 flex items-center justify-center gap-2 text-[15px]"
     >
-      {status === 'signing' && <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin" />}
-      {status === 'settling' && <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin" />}
+      {status === 'signing' && <div className="h-5 w-5 border-2 border-paper border-t-transparent rounded-[10px] animate-spin" />}
+      {status === 'settling' && <div className="h-5 w-5 border-2 border-paper border-t-transparent rounded-[10px] animate-spin" />}
       
       {status === 'signing' ? 'Approve in Wallet...' 
         : status === 'settling' ? 'Swapping & Settling...' 
@@ -190,9 +190,9 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ invoiceId, onBackToM
     <div className="w-full max-w-5xl mx-auto px-4 py-8 relative z-10 checkout-container">
       <button 
         onClick={onBackToMerchant}
-        className="flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-white mb-8 transition group"
+        className="flex items-center gap-2 text-sm font-bold font-mono uppercase text-muted hover:text-ink mb-8 transition group"
       >
-        <div className="p-1.5 rounded-full bg-white/5 border border-white/10 group-hover:bg-white/10 transition">
+        <div className="p-1 rounded-[5px] border border-line group-hover:bg-line-soft transition">
           <ChevronLeft className="h-4 w-4" />
         </div>
         Cancel Payment
@@ -206,30 +206,30 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ invoiceId, onBackToM
             animate={{ opacity: 1, scale: 1 }}
             className="max-w-md mx-auto text-center py-12"
           >
-            <div className="h-20 w-20 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center text-emerald-400 mx-auto mb-6 shadow-[0_0_40px_rgba(16,185,129,0.2)]">
+            <div className="h-20 w-20 bg-signal/20 border border-signal rounded-[10px] flex items-center justify-center text-up mx-auto mb-6 shadow-veritas">
               <CheckCircle2 className="h-10 w-10" />
             </div>
-            <h3 className="text-3xl font-extrabold text-white mb-3">Payment Complete</h3>
-            <p className="text-slate-400 mb-8">Funds successfully swapped and settled to the merchant's destination wallet.</p>
+            <h3 className="text-3xl font-extrabold text-ink mb-3">Payment Complete</h3>
+            <p className="text-muted mb-8 font-mono text-sm">Funds successfully swapped and settled to the merchant's destination wallet.</p>
 
-            <div className="glass-card p-6 text-left space-y-4 mb-8">
-              <div className="flex justify-between border-b border-white/5 pb-3">
-                <span className="text-slate-400 font-medium">Amount Paid</span>
-                <span className="text-white font-bold">${invoice.amount}</span>
+            <div className="paper-card p-6 text-left space-y-4 mb-8 bg-white">
+              <div className="flex justify-between border-b border-line-soft pb-3">
+                <span className="mono-label">Amount Paid</span>
+                <span className="text-ink font-bold text-lg">${invoice.amount}</span>
               </div>
-              <div className="flex justify-between border-b border-white/5 pb-3">
-                <span className="text-slate-400 font-medium">Destination</span>
-                <span className="text-white font-mono text-sm">{formatAddress(invoice.recipientAddress, 8)}</span>
+              <div className="flex justify-between border-b border-line-soft pb-3">
+                <span className="mono-label">Destination</span>
+                <span className="text-ink font-mono text-sm">{formatAddress(invoice.recipientAddress, 8)}</span>
               </div>
               {txHash && (
-                <div className="flex justify-between border-b border-white/5 pb-3">
-                  <span className="text-slate-400 font-medium">Receipt Hash</span>
-                  <span className="text-indigo-400 font-mono text-sm truncate max-w-[160px]">{txHash}</span>
+                <div className="flex justify-between border-b border-line-soft pb-3">
+                  <span className="mono-label">Receipt Hash</span>
+                  <span className="text-ink font-mono text-sm truncate max-w-[160px]">{txHash}</span>
                 </div>
               )}
             </div>
 
-            <button onClick={onBackToMerchant} className="btn-primary w-full py-4 text-lg">
+            <button onClick={onBackToMerchant} className="btn btn--dark w-full py-4 text-sm">
               Return to Merchant
             </button>
           </motion.div>
@@ -238,40 +238,42 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ invoiceId, onBackToM
             key="checkout"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="checkout-desktop-split"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start"
           >
             {/* Left Column - Invoice Summary */}
             <div className="space-y-6">
-              <div className="glass-card p-8 relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-6 opacity-10 pointer-events-none">
+              <div className="paper-card p-8 relative overflow-hidden bg-white shadow-veritas border-[1.5px] border-ink/20">
+                <div className="absolute top-0 right-0 p-6 opacity-[0.03] pointer-events-none">
                   <Lock className="h-32 w-32" />
                 </div>
                 
-                <div className="text-sm font-bold text-indigo-400 tracking-widest uppercase mb-2">{invoice.description}</div>
-                <div className="text-5xl font-extrabold text-white mb-4 tracking-tight">
-                  ${invoice.amount} <span className="text-xl font-semibold text-slate-400">{invoice.token}</span>
+                <div className="mono-label mb-3">{invoice.description}</div>
+                <div className="text-5xl font-extrabold text-ink mb-6 tracking-tight">
+                  ${invoice.amount} <span className="text-xl font-mono font-bold text-muted">{invoice.token}</span>
                 </div>
                 
                 <div className="flex flex-wrap items-center gap-3 mb-8">
-                  <span className={invoice.chain === 'base' ? 'badge-base' : 'badge-polygon'}>
+                  <span className="text-[10px] font-bold px-2 py-1 border border-line rounded uppercase tracking-wider text-muted bg-paper-solid">
                     Settles to {selectedChain.name}
                   </span>
-                  <span className="badge-base bg-emerald-500/10 text-emerald-400 border-emerald-500/20">
-                    <ShieldCheck className="h-3.5 w-3.5" /> Secure Checkout
+                  <span className="text-[10px] font-bold px-2 py-1 border border-signal rounded uppercase tracking-wider text-ink bg-signal/20 flex items-center gap-1">
+                    <ShieldCheck className="h-3 w-3" /> Secure Checkout
                   </span>
                 </div>
 
                 {tonAddress && (
-                  <div className="mt-4 border-t border-white/10 pt-6">
-                    <h4 className="text-sm font-semibold text-slate-400 mb-4">Cross-Chain Route</h4>
-                    <RouteVisualizer
-                      fromChain="TON"
-                      toChain={selectedChain.name}
-                      fromSymbol="TON"
-                      toSymbol={invoice.token}
-                      isStreaming={status === 'quoting' && !quoteError}
-                      status={status}
-                    />
+                  <div className="mt-4 border-t border-line pt-6">
+                    <h4 className="mono-label mb-4">Cross-Chain Route</h4>
+                    <div className="opacity-80">
+                      <RouteVisualizer
+                        fromChain="TON"
+                        toChain={selectedChain.name}
+                        fromSymbol="TON"
+                        toSymbol={invoice.token}
+                        isStreaming={status === 'quoting' && !quoteError}
+                        status={status}
+                      />
+                    </div>
                   </div>
                 )}
               </div>
@@ -279,11 +281,11 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ invoiceId, onBackToM
 
             {/* Right Column - Payment Controls */}
             <div className="space-y-6">
-              <div className="glass-card p-6 space-y-6">
-                <div className="flex items-center justify-between gap-4 p-4 bg-black/40 border border-white/5 rounded-2xl">
+              <div className="paper-card p-6 space-y-6 bg-white border-[1.5px] border-ink/10">
+                <div className="flex items-center justify-between gap-4 p-4 bg-paper border border-line rounded-[10px]">
                   <div>
-                    <div className="text-sm font-bold text-white mb-1">Payment Wallet</div>
-                    <div className="text-xs text-slate-400 font-mono">
+                    <div className="mono-label !text-[10px] mb-1">Payment Wallet</div>
+                    <div className="text-xs text-ink font-bold font-mono">
                       {tonAddress ? formatAddress(tonAddress) : 'Connect your TON wallet'}
                     </div>
                   </div>
@@ -291,27 +293,27 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ invoiceId, onBackToM
                 </div>
 
                 {(errorMsg || quoteError) && (
-                  <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl text-rose-300 text-sm font-medium flex gap-3 items-start">
+                  <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="p-4 bg-red-50 border border-red-200 rounded-[10px] text-down text-sm font-bold flex gap-3 items-start">
                     <AlertCircle className="h-5 w-5 shrink-0 mt-0.5" />
-                    <div>{errorMsg || 'Failed to stream price quote. Check network connection.'}</div>
+                    <div className="font-mono">{errorMsg || 'Failed to stream price quote. Check network connection.'}</div>
                   </motion.div>
                 )}
 
                 {tonAddress && (
                   <div className="space-y-4">
-                    <div className="p-5 bg-white/[0.02] border border-white/5 rounded-2xl">
+                    <div className="p-5 bg-paper border border-line rounded-[10px]">
                       <div className="flex justify-between items-center mb-2">
-                        <span className="text-slate-400 font-medium">Total Due</span>
+                        <span className="mono-label !text-sm">Total Due</span>
                         <div className="text-right">
-                          <span className="text-2xl font-bold text-white block">
-                            {quote ? `${displayTonAmount} TON` : <span className="skeleton inline-block w-24 h-8 rounded" />}
+                          <span className="text-2xl font-bold text-ink block font-mono">
+                            {quote ? `${displayTonAmount} TON` : <span className="inline-block w-24 h-8 bg-line-soft rounded animate-pulse" />}
                           </span>
                         </div>
                       </div>
                       
                       <button 
                         onClick={() => setShowDetails(!showDetails)}
-                        className="flex items-center justify-between w-full mt-4 pt-4 border-t border-white/5 text-sm font-medium text-slate-400 hover:text-indigo-400 transition"
+                        className="flex items-center justify-between w-full mt-4 pt-4 border-t border-line text-xs font-bold font-mono uppercase text-muted hover:text-ink transition"
                       >
                         Transaction Details
                         {showDetails ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
@@ -325,18 +327,18 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ invoiceId, onBackToM
                             exit={{ height: 0, opacity: 0 }}
                             className="overflow-hidden"
                           >
-                            <div className="pt-4 space-y-3 text-sm">
-                              <div className="flex justify-between text-slate-300">
+                            <div className="pt-4 space-y-3 font-mono text-xs">
+                              <div className="flex justify-between text-muted">
                                 <span>Exchange Rate</span>
-                                <span>{quote ? `1 TON ≈ ${(parseFloat(invoice.amount) / parseFloat(displayTonAmount)).toFixed(4)} ${invoice.token}` : '-'}</span>
+                                <span className="text-ink font-bold">{quote ? `1 TON ≈ ${(parseFloat(invoice.amount) / parseFloat(displayTonAmount)).toFixed(4)} ${invoice.token}` : '-'}</span>
                               </div>
-                              <div className="flex justify-between text-slate-300">
+                              <div className="flex justify-between text-muted">
                                 <span>Network Fee</span>
-                                <span>Included</span>
+                                <span className="text-ink font-bold">Included</span>
                               </div>
-                              <div className="flex justify-between text-slate-300">
+                              <div className="flex justify-between text-muted">
                                 <span>Routing</span>
-                                <span className="text-indigo-300 font-medium">{quote?.resolverName || 'Omniston'}</span>
+                                <span className="text-ink font-bold">{quote?.resolverName || 'Omniston'}</span>
                               </div>
                             </div>
                           </motion.div>
@@ -344,7 +346,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ invoiceId, onBackToM
                       </AnimatePresence>
                     </div>
 
-                    <div className="desktop-action">
+                    <div className="hidden md:block">
                       <ActionButton />
                     </div>
                   </div>
@@ -357,7 +359,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ invoiceId, onBackToM
 
       {/* Sticky Bottom Action Bar for Mobile */}
       {tonAddress && status !== 'success' && (
-        <div className="mobile-sticky-action">
+        <div className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-paper/90 backdrop-blur-md border-t border-line z-50">
           <ActionButton />
         </div>
       )}
