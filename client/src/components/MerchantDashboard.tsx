@@ -3,7 +3,7 @@ import { Plus, Copy, Check, ArrowRight, History, CreditCard, Activity, DollarSig
 import { QRCodeSVG } from 'qrcode.react';
 import { SUPPORTED_CHAINS, formatAddress } from '../utils/chains';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://server-0xmicheal.vercel.app';
 
 export const MerchantDashboard: React.FC = () => {
   const [recipientAddress, setRecipientAddress] = useState('0x71C7656EC7ab88b098defB751B7401B5f6d8976F');

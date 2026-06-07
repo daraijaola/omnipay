@@ -104,6 +104,10 @@ app.post('/api/invoices/:id/settle', (req, res) => {
   res.json(invoice);
 });
 
-app.listen(PORT, () => {
-  console.log(`[OmniPay Server] Running on http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`[OmniPay Server] Running on http://localhost:${PORT}`);
+  });
+}
+
+export default app;

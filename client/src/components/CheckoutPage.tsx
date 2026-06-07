@@ -7,7 +7,7 @@ import confetti from 'canvas-confetti';
 import { RouteVisualizer } from './RouteVisualizer';
 import { formatAddress, SUPPORTED_CHAINS } from '../utils/chains';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://server-0xmicheal.vercel.app';
 
 interface CheckoutPageProps {
   invoiceId: string;
