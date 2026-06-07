@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { MerchantDashboard } from './components/MerchantDashboard';
 import { CheckoutPage } from './components/CheckoutPage';
 import { CreditCard, Github } from 'lucide-react';
+import { TonConnectButton } from '@tonconnect/ui-react';
 
 function App() {
   const [checkoutId, setCheckoutId] = useState<string | null>(null);
